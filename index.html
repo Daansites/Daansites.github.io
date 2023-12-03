@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>write html in your browser</title>
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            margin: 50px;
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+        }
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: none;
+            background-color: #292929;
+        }
+        #codeInput {
+            width: 100%;
+            height: 300px; 
+            background-color: #000; 
+            color: #00ff00; 
+            font-family: 'Courier New', monospace;
+            border: none; 
+            font-size: 16px; 
+        }
+        button {
+            background-color: #00ff00; 
+            color: #000; 
+            border: none; 
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+</head>
+<body>
+
+    <button onclick="runCode()">Run Code</button>
+    <button onclick="toggleOutput()">Toggle Output</button>
+
+    <textarea id="codeInput" placeholder="Write your HTML code here..."></textarea>
+
+    <div id="output"></div>
+
+    <script>
+
+        const headerText = "Welcome to the HTML Runner!";
+        let i = 0;
+
+        function typeWriter() {
+            if (i < headerText.length) {
+                document.getElementById("typingText").innerHTML += headerText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+
+        function runCode() {
+
+            document.getElementById("output").innerHTML = "";
+
+
+            const code = document.getElementById("codeInput").value;
+
+
+            const iframe = document.createElement("iframe");
+            iframe.style.width = "100%";
+            iframe.style.height = "300px";
+            document.getElementById("output").appendChild(iframe);
+
+            iframe.contentDocument.open();
+            iframe.contentDocument.write(code);
+            iframe.contentDocument.close();
+
+
+            document.getElementById("output").style.display = "block";
+        }
+
+
+        function toggleOutput() {
+            const outputSection = document.getElementById("output");
+            outputSection.style.display = (outputSection.style.display === "none") ? "block" : "none";
+        }
+
+
+        window.onload = function () {
+            typeWriter();
+        };
+    </script>
+
+</body>
+</html>
