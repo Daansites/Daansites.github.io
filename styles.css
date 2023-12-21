@@ -1,0 +1,77 @@
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #000000;
+    color: whitesmoke;
+  }
+  
+  .top-bar {
+    background: linear-gradient(#000000, #000040); /* Color variation */
+    padding: 10px;
+    margin-top: -15px;
+    margin-left: 2.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: calc(100% - 30px);
+    border-radius: 10px;
+  }
+  
+  .logo img {
+    width: 50px; /* Adjust the size of the logo */
+    height: 50px;
+    margin-top: 15px;
+  }
+  
+  .buttons {
+    display: flex;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    margin-top: 15px;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: 600ms;
+    width: 110px;
+}
+  
+  .button:hover {
+    border-color: #000000;
+    color: #000000;
+    transition: 600ms;
+    cursor: pointer;
+  }
+
+  .open-Button{
+    background: linear-gradient(#000010, #000020);
+    color: #00ff00;
+    width: 125px;
+    height: 50px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #00ff00;
+    transition-duration: 300ms;
+}
+
+.open-Button:hover{
+    background: linear-gradient(#000010, #000020);
+    color: #000000;
+    width: 125px;
+    height: 50px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #000000;
+    transition-duration: 300ms;
+}
