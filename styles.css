@@ -24,10 +24,7 @@
     width: 50px; /* Adjust the size of the logo */
     height: 50px;
     margin-top: 15px;
-    @media screen and (min-width: 1024px) {
-      width: 75px;
-      height: 75px;
-    }
+
   }
   
   .buttons {
@@ -52,11 +49,7 @@
     @media screen and (max-width:600px) {
       display: none;
   }
-  @media screen and (min-width: 1024px) {
-    width: 150px;
-    height: 60px;
-    font-size: 25px;
-  }
+
 }
 
 .mobilebutton{
