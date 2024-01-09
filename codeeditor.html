@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Editor</title>
     <style>
-
-        *{
+        * {
             background-color: #1E1E1E;
         }
 
         body {
             margin: 0;
             padding: 0;
-
             overflow: hidden;
             font-family: 'Courier New', monospace;
             display: flex;
@@ -22,7 +20,7 @@
             color: whitesmoke;
         }
 
-        h2{
+        h2 {
             color: whitesmoke;
         }
 
@@ -52,16 +50,19 @@
             padding: 20px;
             box-sizing: border-box;
             overflow: auto;
-
         }
 
         #preview {
             color: #F8F8F2;
         }
+
+        button {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    
+
     <div id="editor-container">
         <textarea id="editor" placeholder="Write your HTML code here..."></textarea>
     </div>
@@ -70,18 +71,54 @@
         <h2>HTML Preview</h2>
         <div id="preview"></div>
     </div>
-    <a href="index.html" style="text-decoration: none; color: whitesmoke; font-size: 20px;">Home</a>
+
+    <button onclick="downloadCode()"style="color: whitesmoke; font-size: 20px; margin-top: 20px; margin-right: 20px; height: 32px; border-radius: 5px; border-style: solid; border-color: whitesmoke;">Download</button>
+    <button onclick="loadCode()"style="color: whitesmoke; font-size: 20px; margin-top: 20px; margin-right: 20px; height: 32px; border-radius: 5px; border-style: solid; border-color: whitesmoke;">Load</button>
+    <a href="index.html" style="text-decoration: none; color: whitesmoke; font-size: 20px; margin-top: 20px;">Home</a>
+
     <script>
         window.onload = function () {
             const editor = document.getElementById('editor');
             const preview = document.getElementById('preview');
 
             editor.addEventListener('input', function () {
-                // Handle the changes in the code
                 const code = editor.value;
                 preview.innerHTML = code;
             });
         };
+
+        function downloadCode() {
+            const code = document.getElementById('editor').value;
+            const blob = new Blob([code], { type: 'text/plain' });
+            const link = document.createElement('a');
+
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'downloaded_code.html';
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function loadCode() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.html';
+
+            input.onchange = function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const content = e.target.result;
+                        document.getElementById('editor').value = content;
+                    };
+                    reader.readAsText(file);
+                }
+            };
+
+            input.click();
+        }
     </script>
 </body>
 </html>
