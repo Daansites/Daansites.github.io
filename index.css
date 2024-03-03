@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI';
+    color: #d0d0d0;
+    font-weight: bold;
+}
+
+body {
+    background-color: black;
+}
+
+.main {
+    margin: 50px auto; /* Center the main div horizontally */
+    max-width: 90%; /* Limit the maximum width for better responsiveness */
+    height: 60%; /* Adjusted height percentage */
+    max-height: 300px; /* Limit the maximum height */
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shadowbox{
+    box-shadow: 0 25px 100px 100px #101535;
+    width: 75%;
+    align-self: center;
+    background: none;
+    height: 0;
+}
+
+.screen {
+    width: 100%; /* Allow the screen div to fill the parent div */
+    height: 100%; /* Allow the screen div to fill the parent div */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 2 / 1; /* Aspect ratio (2:1) */
+}
+
+.small {
+    font-size: 5vw; /* Calculate font size based on viewport width */
+    margin: -40px;
+}
+
+.big {
+    font-size: 20vw; /* Calculate font size based on viewport width */
+}
+
+/* Media queries for smaller screen sizes */
+@media screen and (max-width: 600px) {
+    .small {
+        font-size: 5vw; /* Adjust font size for smaller screens */
+    }
+
+    .big {
+        font-size: 10vw; /* Adjust font size for smaller screens */
+    }
+
+    .main {
+        height: 80%; /* Adjusted height percentage for smaller screens */
+    }
+}
+
+.container {
+    display: flex;
+}
+
+.box {
+    flex: 1;
+    margin: 18px;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center;
+    font-size: 200%;
+    text-align: center;
+    border: 3px solid #202020c5; /* Added for visualization */
+    border-radius: 10px;
+    transition-duration: 500ms;
+}
+
+.content {
+    width: 100%; /* Ensure text takes full width */
+}
+
+.box:hover{
+    background-color: #222;
+    transition-duration: 500ms;
+    cursor: pointer;
+}
