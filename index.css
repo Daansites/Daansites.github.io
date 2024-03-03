@@ -51,11 +51,12 @@ body {
 /* Media queries for smaller screen sizes */
 @media screen and (max-width: 600px) {
     .small {
-        font-size: 5vw; /* Adjust font size for smaller screens */
+        font-size: 10vw; /* Adjust font size for smaller screens */
+        margin: -20px;
     }
 
     .big {
-        font-size: 10vw; /* Adjust font size for smaller screens */
+        font-size: 20vw; /* Adjust font size for smaller screens */
     }
 
     .main {
