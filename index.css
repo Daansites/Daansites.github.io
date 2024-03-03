@@ -84,6 +84,9 @@ body {
 
 .content {
     width: 100%; /* Ensure text takes full width */
+    @media screen and (max-width: 600px) {
+        width: 50%;
+    }
 }
 
 .box:hover{
