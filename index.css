@@ -71,7 +71,7 @@ body {
 
 .box {
     flex: 1;
-    margin: 18px;
+    margin: 10px;
     display: flex;
     align-items: center; /* Center vertically */
     justify-content: center;
