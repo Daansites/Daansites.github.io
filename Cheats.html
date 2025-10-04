@@ -1,5 +1,48 @@
-auto complete malmberg word trainer:
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Malmberg Word Trainer Auto</title>
+  <style>
+    body {
+      background: #0f1117;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+    }
+    h1 {
+      color: #00ffe0;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    pre {
+      background: #1a1c23;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      border: 1px solid #333;
+    }
+    button {
+      background: #00ffe0;
+      color: #000;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #00c8b5;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malmberg Word Trainer Auto-Completer</h1>
+  <pre id="code">
 async function autoTrainerLoop() {
   const delay = ms => new Promise(res => setTimeout(res, ms));
 
@@ -7,28 +50,23 @@ async function autoTrainerLoop() {
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
 
-    // Step 1: Click 100px below center
     const click1 = document.elementFromPoint(centerX, centerY + 100);
     if (click1 instanceof HTMLElement && typeof click1.click === 'function') click1.click();
     await delay(700);
 
-    // Step 2: Get last nested span (English)
     const spans = Array.from(document.querySelectorAll('p.eb-content-block.large.ng-star-inserted span.eb-content-block-mime-type-text-plain.ng-star-inserted'));
     const englishSpan = spans.at(-1);
     const copiedText = englishSpan?.textContent.trim() || '';
     await delay(700);
 
-    // Step 3: Click 100px below center again
     const click2 = document.elementFromPoint(centerX, centerY + 100);
     if (click2 instanceof HTMLElement && typeof click2.click === 'function') click2.click();
     await delay(700);
 
-    // Step 4: Click center of screen
     const click3 = document.elementFromPoint(centerX, centerY);
     if (click3 instanceof HTMLElement && typeof click3.click === 'function') click3.click();
     await delay(700);
 
-    // Step 5: Clear and paste text
     const active = document.activeElement;
     if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
       active.value = '';
@@ -39,7 +77,6 @@ async function autoTrainerLoop() {
     }
     await delay(700);
 
-    // Step 6: Click "correct" button
     const correctBtn = document.querySelector('button.vo-action.vo-large-icon.vo-safe');
     if (correctBtn instanceof HTMLElement && typeof correctBtn.click === 'function') correctBtn.click();
     await delay(1200);
@@ -47,3 +84,16 @@ async function autoTrainerLoop() {
 }
 
 autoTrainerLoop();
+  </pre>
+  <button onclick="copyCode()">📋 Copy Code</button>
+
+  <script>
+    function copyCode() {
+      const code = document.getElementById('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('Code copied to clipboard!');
+      });
+    }
+  </script>
+</body>
+</html>
